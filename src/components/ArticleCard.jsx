@@ -18,15 +18,32 @@ const ArticleCard = ({ article_id }) => {
     }, [article_id]);
 
     return (
-        <>
-            <h3>{articleData.title}</h3>
-            <p>{articleData.body?.slice(0, 100)}</p>
-            <img width="100px" src={articleData.article_img_url}></img>
-            <p>{articleData.created_at}</p>
-            <p>{articleData.topic}</p>
-
-            <UserDetails username={articleData.author} />
-        </>
+        <section className="ArticleCard">
+            <div className="ArticleCard__byline">
+                <div className="ArticleCard__byline-left">
+                    <UserDetails username={articleData.author} />
+                    <p>
+                        {new Date(articleData.created_at).toLocaleDateString()}
+                    </p>
+                </div>
+                <div className="ArticleCard__byline-right">
+                    <div className="ArticleCard__topic">
+                        <p>{articleData.topic}</p>
+                    </div>
+                </div>
+            </div>
+            <div className="ArticleCard__title">
+                <h3>{articleData.title}</h3>
+            </div>
+            <div className="ArticleCard__body">
+                <div className="ArticleCard__bodyText">
+                    <p>{articleData.body?.slice(0, 100)}... </p>
+                </div>
+                <div className="ArticleCard__thumbnail">
+                    <img src={articleData.article_img_url}></img>
+                </div>
+            </div>
+        </section>
     );
 };
 

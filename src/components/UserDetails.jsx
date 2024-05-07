@@ -17,8 +17,14 @@ const UserDetails = ({ username }) => {
 
     return (
         <>
-            <img width="25px" src={userData.avatar_url}></img>
-            <p>{userData.name}</p>
+            <div className="UserDetails">
+                <div className="UserDetails__avatar">
+                    <img src={userData.avatar_url}></img>
+                </div>
+                <div className="UserDetails__name">
+                    <p>{userData.name}</p>
+                </div>
+            </div>
         </>
     );
 };

@@ -14,7 +14,7 @@ const ArticlesList = () => {
     }, []);
 
     return (
-        <>
+        <section className="ArticlesList">
             {articlesData.map((article) => {
                 return (
                     <ArticleCard
@@ -23,7 +23,7 @@ const ArticlesList = () => {
                     />
                 );
             })}
-        </>
+        </section>
     );
 };
 
