@@ -5,13 +5,19 @@ import { useState } from "react";
 
 const ArticlesList = () => {
     const [articlesData, setArticlesData] = useState([]);
+    const [loading, setLoading] = useState(true);
     useEffect(() => {
         fetchArticles()
-            .then(({ data: { articles } }) => setArticlesData(articles))
+            .then(({ data: { articles } }) => {
+                setArticlesData(articles);
+                setLoading(false);
+            })
             .catch((err) => {
                 console.error(err.response.data);
             });
     }, []);
+
+    if (loading) return <h2>Loading articles...</h2>;
 
     return (
         <section className="ArticlesList">

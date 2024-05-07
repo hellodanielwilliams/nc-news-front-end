@@ -8,12 +8,16 @@ import CommentsList from "./CommentsList";
 const ArticleDisplay = () => {
     const { article_id } = useParams();
     const [articleData, setArticleData] = useState({});
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         fetchArticleById(article_id).then(({ data: { article } }) => {
             setArticleData(article);
+            setLoading(false);
         });
     }, [article_id]);
+
+    if (loading) return <h2>Loading article...</h2>;
 
     return (
         <>
