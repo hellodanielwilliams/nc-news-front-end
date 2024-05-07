@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { fetchArticleById } from "../utils/api";
 import UserDetails from "./UserDetails";
+import Byline from "./Byline";
 
 const ArticleDisplay = () => {
     const { article_id } = useParams();
@@ -14,30 +15,24 @@ const ArticleDisplay = () => {
     }, []);
 
     return (
-        <article className="ArticleDisplay">
-            <div className="ArticleCard__byline">
-                <div className="ArticleCard__byline-left">
-                    <UserDetails username={articleData.author} />
-                    <p>
-                        {new Date(articleData.created_at).toLocaleDateString()}
-                    </p>
+        <>
+            <article className="ArticleDisplay">
+                <Byline
+                    username={articleData.author}
+                    date={articleData.created_at}
+                    topic={articleData.topic}
+                ></Byline>
+                <div className="ArticleDisplay__title">
+                    <h2>{articleData.title}</h2>
                 </div>
-                <div className="ArticleCard__byline-right">
-                    <div className="ArticleCard__topic">
-                        <p>{articleData.topic}</p>
-                    </div>
+                <div className="ArticleDisplay__image">
+                    <img src={articleData.article_img_url}></img>
                 </div>
-            </div>
-            <div className="ArticleDisplay__title">
-                <h2>{articleData.title}</h2>
-            </div>
-            <div className="ArticleDisplay__image">
-                <img src={articleData.article_img_url}></img>
-            </div>
-            <div className="ArticleDisplay__body">
-                <p>{articleData.body}</p>
-            </div>
-        </article>
+                <div className="ArticleDisplay__body">
+                    <p>{articleData.body}</p>
+                </div>
+            </article>
+        </>
     );
 };
 

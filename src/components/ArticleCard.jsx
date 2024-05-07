@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { fetchArticleById } from "../utils/api";
 import UserDetails from "./UserDetails";
 import { Link } from "react-router-dom";
+import Byline from "./Byline";
 
 const ArticleCard = ({ article_id }) => {
     const [articleData, setArticleData] = useState({});
@@ -20,19 +21,11 @@ const ArticleCard = ({ article_id }) => {
 
     return (
         <section className="ArticleCard">
-            <div className="ArticleCard__byline">
-                <div className="ArticleCard__byline-left">
-                    <UserDetails username={articleData.author} />
-                    <p>
-                        {new Date(articleData.created_at).toLocaleDateString()}
-                    </p>
-                </div>
-                <div className="ArticleCard__byline-right">
-                    <div className="ArticleCard__topic">
-                        <p>{articleData.topic}</p>
-                    </div>
-                </div>
-            </div>
+            <Byline
+                username={articleData.author}
+                date={articleData.created_at}
+                topic={articleData.topic}
+            />
             <Link to={`/articles/${article_id}`}>
                 <div className="ArticleCard__title">
                     <h3>{articleData.title}</h3>
