@@ -3,14 +3,11 @@ import { fetchUserByUsername } from "../utils/api";
 
 const UserDetails = ({ username }) => {
     const [userData, setUserData] = useState({});
-    const [loading, setLoading] = useState(true);
-
     useEffect(() => {
         if (username) {
             fetchUserByUsername(username)
                 .then(({ data: { user } }) => {
                     setUserData(user);
-                    setLoading(false);
                 })
                 .catch((err) => {
                     console.error(err.response.data);
@@ -22,16 +19,10 @@ const UserDetails = ({ username }) => {
         <>
             <div className="UserDetails">
                 <div className="UserDetails__avatar">
-                    <img
-                        src={
-                            loading
-                                ? "/public/default_avatar.webp"
-                                : userData.avatar_url
-                        }
-                    ></img>
+                    <img src={userData.avatar_url}></img>
                 </div>
                 <div className="UserDetails__name">
-                    <p>{loading ? "Loading user" : userData.name}</p>
+                    <p>{userData.name}</p>
                 </div>
             </div>
         </>
