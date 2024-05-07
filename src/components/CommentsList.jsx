@@ -15,10 +15,17 @@ const CommentsList = () => {
 
     return (
         <>
-            <h3>Comments</h3>
-            {commentsData.map((comment) => {
-                return <CommentCard comment={comment} />;
-            })}
+            <section className="CommentsList">
+                <h3>Comments</h3>
+                {commentsData.map((comment) => {
+                    return (
+                        <CommentCard
+                            comment={comment}
+                            key={`c_${comment.comment_id}`}
+                        />
+                    );
+                })}
+            </section>
         </>
     );
 };
