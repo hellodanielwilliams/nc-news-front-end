@@ -8,11 +8,13 @@ const Byline = ({ username, date, topic }) => {
                     <UserDetails username={username} />
                     <p>{new Date(date).toLocaleDateString()}</p>
                 </div>
-                <div className="Byline-right">
-                    <div className="Byline__topic">
-                        <p>{topic}</p>
+                {topic && (
+                    <div className="Byline-right">
+                        <div className="Byline__topic">
+                            <p>{topic}</p>
+                        </div>
                     </div>
-                </div>
+                )}
             </div>
         </>
     );

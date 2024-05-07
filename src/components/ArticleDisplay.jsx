@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import { fetchArticleById } from "../utils/api";
 import UserDetails from "./UserDetails";
 import Byline from "./Byline";
+import CommentsList from "./CommentsList";
 
 const ArticleDisplay = () => {
     const { article_id } = useParams();
@@ -32,6 +33,9 @@ const ArticleDisplay = () => {
                     <p>{articleData.body}</p>
                 </div>
             </article>
+            <section>
+                <CommentsList></CommentsList>
+            </section>
         </>
     );
 };
