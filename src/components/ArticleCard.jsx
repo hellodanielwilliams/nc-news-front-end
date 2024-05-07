@@ -6,14 +6,16 @@ const ArticleCard = ({ article_id }) => {
     const [articleData, setArticleData] = useState({});
 
     useEffect(() => {
-        fetchArticleById(article_id)
-            .then(({ data: { article } }) => {
-                setArticleData(article);
-            })
-            .catch((err) => {
-                console.log(err);
-            });
-    }, []);
+        if (article_id) {
+            fetchArticleById(article_id)
+                .then(({ data: { article } }) => {
+                    setArticleData(article);
+                })
+                .catch((err) => {
+                    console.error(err.response.data);
+                });
+        }
+    }, [article_id]);
 
     return (
         <>

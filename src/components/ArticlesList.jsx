@@ -9,13 +9,12 @@ const ArticlesList = () => {
         fetchArticles()
             .then(({ data: { articles } }) => setArticlesData(articles))
             .catch((err) => {
-                console.log(err);
+                console.error(err.response.data);
             });
     }, []);
 
     return (
         <>
-            <h2>Articles List...</h2>
             {articlesData.map((article) => {
                 return (
                     <ArticleCard

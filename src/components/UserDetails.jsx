@@ -3,17 +3,17 @@ import { fetchUserByUsername } from "../utils/api";
 
 const UserDetails = ({ username }) => {
     const [userData, setUserData] = useState({});
-    console.log(username, "<<<< username in userDetails");
-
     useEffect(() => {
-        fetchUserByUsername(username)
-            .then(({ data: { user } }) => {
-                setUserData(user);
-            })
-            .catch((err) => {
-                console.log(err.response.data.msg);
-            });
-    }, []);
+        if (username) {
+            fetchUserByUsername(username)
+                .then(({ data: { user } }) => {
+                    setUserData(user);
+                })
+                .catch((err) => {
+                    console.error(err.response.data);
+                });
+        }
+    }, [username]);
 
     return (
         <>
