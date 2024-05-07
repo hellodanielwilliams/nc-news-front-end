@@ -19,3 +19,7 @@ export const fetchUserByUsername = (username) => {
 export const fetchCommentsByArticleId = (article_id) => {
     return newsApi.get(`/articles/${article_id}/comments`)
 }
+
+export const patchVotesByArticleId = (article_id, inc) => {
+    return newsApi.patch(`/articles/${article_id}`, inc)
+}

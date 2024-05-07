@@ -4,6 +4,7 @@ import { fetchArticleById } from "../utils/api";
 import UserDetails from "./UserDetails";
 import Byline from "./Byline";
 import CommentsList from "./CommentsList";
+import Votes from "./Votes";
 
 const ArticleDisplay = () => {
     const { article_id } = useParams();
@@ -37,6 +38,10 @@ const ArticleDisplay = () => {
                     <p>{articleData.body}</p>
                 </div>
             </article>
+            <Votes
+                id={articleData.article_id}
+                votes={articleData.votes}
+            ></Votes>
             <section>
                 <CommentsList></CommentsList>
             </section>
