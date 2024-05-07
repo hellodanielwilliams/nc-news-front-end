@@ -11,7 +11,7 @@ const CommentsList = () => {
         fetchCommentsByArticleId(article_id).then(({ data: { comments } }) =>
             setCommentsData(comments)
         );
-    });
+    }, []);
 
     return (
         <>
