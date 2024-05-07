@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { fetchArticleById } from "../utils/api";
 import UserDetails from "./UserDetails";
+import { Link } from "react-router-dom";
 
 const ArticleCard = ({ article_id }) => {
     const [articleData, setArticleData] = useState({});
@@ -32,17 +33,19 @@ const ArticleCard = ({ article_id }) => {
                     </div>
                 </div>
             </div>
-            <div className="ArticleCard__title">
-                <h3>{articleData.title}</h3>
-            </div>
-            <div className="ArticleCard__body">
-                <div className="ArticleCard__bodyText">
-                    <p>{articleData.body?.slice(0, 100)}... </p>
+            <Link to={`/articles/${article_id}`}>
+                <div className="ArticleCard__title">
+                    <h3>{articleData.title}</h3>
                 </div>
-                <div className="ArticleCard__thumbnail">
-                    <img src={articleData.article_img_url}></img>
+                <div className="ArticleCard__body">
+                    <div className="ArticleCard__bodyText">
+                        <p>{articleData.body?.slice(0, 100)}... </p>
+                    </div>
+                    <div className="ArticleCard__thumbnail">
+                        <img src={articleData.article_img_url}></img>
+                    </div>
                 </div>
-            </div>
+            </Link>
         </section>
     );
 };

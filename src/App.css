@@ -22,6 +22,15 @@
 
 }
 
+.ArticleCard a, .ArticleCard a:visited, .Header a:active, .Header a, .Header a:visited, .Header a:active  {
+  color: inherit;
+  text-decoration: none; 
+}
+
+.ArticleCard a:hover, .Header a:hover {
+  opacity: 80%;
+}
+
 .ArticleCard__byline {
   /* border: 2px solid teal; */
   grid-area: byline;
