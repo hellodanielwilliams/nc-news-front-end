@@ -1,7 +1,14 @@
 import "./App.css";
+import ArticlesList from "./components/ArticlesList";
+import Header from "./components/Header";
 
 const App = () => {
-    return <h1>App</h1>;
+    return (
+        <>
+            <Header />
+            <ArticlesList />
+        </>
+    );
 };
 
 export default App;
