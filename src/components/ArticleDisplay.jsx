@@ -28,9 +28,15 @@ const ArticleDisplay = () => {
                     </div>
                 </div>
             </div>
-            <h2>{articleData.title}</h2>
-            <img src={articleData.article_img_url}></img>
-            <p>{articleData.body}</p>
+            <div className="ArticleDisplay__title">
+                <h2>{articleData.title}</h2>
+            </div>
+            <div className="ArticleDisplay__image">
+                <img src={articleData.article_img_url}></img>
+            </div>
+            <div className="ArticleDisplay__body">
+                <p>{articleData.body}</p>
+            </div>
         </article>
     );
 };
