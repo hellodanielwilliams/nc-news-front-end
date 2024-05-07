@@ -12,7 +12,7 @@ const ArticleDisplay = () => {
         fetchArticleById(article_id).then(({ data: { article } }) => {
             setArticleData(article);
         });
-    }, []);
+    }, [article_id]);
 
     return (
         <>
