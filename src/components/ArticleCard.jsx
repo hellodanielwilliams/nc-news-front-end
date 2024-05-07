@@ -6,20 +6,24 @@ const ArticleCard = ({ article_id }) => {
     const [articleData, setArticleData] = useState({});
 
     useEffect(() => {
-        fetchArticleById(article_id).then(({ data: { article } }) => {
-            setArticleData(article);
-        });
+        fetchArticleById(article_id)
+            .then(({ data: { article } }) => {
+                setArticleData(article);
+            })
+            .catch((err) => {
+                console.log(err);
+            });
     }, []);
 
     return (
         <>
             <h3>{articleData.title}</h3>
-            <p>{articleData.body.slice(0, 100)}</p>
+            <p>{articleData.body?.slice(0, 100)}</p>
             <img width="100px" src={articleData.article_img_url}></img>
             <p>{articleData.created_at}</p>
             <p>{articleData.topic}</p>
 
-            <UserDetails />
+            <UserDetails username={articleData.author} />
         </>
     );
 };

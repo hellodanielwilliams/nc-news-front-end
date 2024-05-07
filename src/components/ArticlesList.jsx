@@ -6,9 +6,11 @@ import { useState } from "react";
 const ArticlesList = () => {
     const [articlesData, setArticlesData] = useState([]);
     useEffect(() => {
-        fetchArticles().then(({ data: { articles } }) =>
-            setArticlesData(articles)
-        );
+        fetchArticles()
+            .then(({ data: { articles } }) => setArticlesData(articles))
+            .catch((err) => {
+                console.log(err);
+            });
     }, []);
 
     return (
