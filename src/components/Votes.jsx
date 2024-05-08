@@ -11,13 +11,12 @@ const Votes = ({ id, votes }) => {
         setHasVoted(true);
         patchVotesByArticleId(id, { inc_votes: inc })
             .then(() => {
-                console.log("Votes updated");
+                setIsVotingError(false);
             })
             .catch((err) => {
                 setIsVotingError(true);
                 setHasVoted(false);
                 setVotesData(votes);
-                console.log("error updating votes", err);
             });
     };
 
