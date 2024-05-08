@@ -166,3 +166,10 @@
   border-bottom: none;
 }
 
+.Votes__error-true {
+  display: inline;
+}
+
+.Votes__error-false {
+  display: none;
+}
