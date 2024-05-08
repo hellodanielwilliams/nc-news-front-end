@@ -178,11 +178,10 @@
   padding: .5em;
 }
 
-.CommentForm button:disabled {
+.CommentForm button:disabled, .CommentCard__buttonsBox button:disabled {
   opacity:50%;
   cursor: not-allowed;
 }
-
 
 .CommentCard {
   border-bottom: 1px solid darkgray; 
@@ -191,6 +190,20 @@
 
 .CommentCard:last-child {
   border-bottom: none;
+}
+
+.CommentCard__bottomLine{
+  display:flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+
+
+.CommentCard__buttonsBox button {
+  background-color: darkmagenta;
+  color: white;
+  padding: .5em;
 }
 
 .Votes {
