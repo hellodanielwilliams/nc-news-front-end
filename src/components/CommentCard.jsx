@@ -38,16 +38,18 @@ const CommentCard = ({ comment, setCommentDeleted }) => {
                         votes={comment.votes}
                         voteType={"comment"}
                     ></Votes>
-                    {user === comment.author && (
-                        <button
-                            onClick={() => {
-                                handleDelete();
-                            }}
-                            disabled={isDeleteClicked}
-                        >
-                            {isDeleteClicked ? `Deleting...` : `Delete`}
-                        </button>
-                    )}
+                    <div className="CommentCard__buttonsBox">
+                        {user === comment.author && (
+                            <button
+                                onClick={() => {
+                                    handleDelete();
+                                }}
+                                disabled={isDeleteClicked}
+                            >
+                                {isDeleteClicked ? `Deleting...` : `Delete`}
+                            </button>
+                        )}
+                    </div>
                 </div>
                 {isDeleteError && (
                     <p>Problem deleting comment, please try again later</p>
