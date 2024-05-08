@@ -157,6 +157,11 @@
   border-top: 1px solid darkgray;  
 }
 
+.CommentsList-hidden {
+  display:none;
+}
+
+
 .CommentCard {
   border-bottom: 1px solid darkgray; 
   margin-bottom: 1em; 
@@ -187,12 +192,11 @@
   margin:0 1em 0 1em;
 }
 
-.Votes__error-true {
+.Votes__error-true, .CommentForm__error-true {
   display: inline;
   max-width: 90%;
 }
 
-
-.Votes__error-false {
+.Votes__error-false, .CommentForm__error-false {
   display: none;
 }

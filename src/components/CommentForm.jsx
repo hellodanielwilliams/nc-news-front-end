@@ -3,26 +3,38 @@ import { UserContext } from "../contexts/User";
 import { useParams } from "react-router-dom";
 import { postCommentByArticleId } from "../utils/api";
 
-const CommentForm = () => {
+const CommentForm = ({ setCommentExpanded, setCommentPosted }) => {
     const { user } = useContext(UserContext);
     const { article_id } = useParams();
     const [newCommentBody, setNewCommentBody] = useState("");
+    const [isSubmittable, setIsSubmittable] = useState(false);
+    const [isCommentError, setIsCommentError] = useState(false);
 
     const handleInput = (e) => {
-        setNewCommentBody(e.target.value);
+        const inputText = e.target.value;
+        setNewCommentBody(inputText);
+        setIsSubmittable(inputText.length > 0);
     };
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        if (newCommentBody.length !== 0) {
+        if (newCommentBody.length > 0) {
             const req = {
                 username: user,
                 body: newCommentBody,
             };
-            postCommentByArticleId(article_id, req).then((response) => {
-                console.log(response);
-                setNewCommentBody("");
-            });
+            setIsSubmittable(false);
+            postCommentByArticleId(article_id, req)
+                .then((response) => {
+                    setNewCommentBody("");
+                    setCommentExpanded(false);
+                    setCommentPosted(response);
+                    setIsCommentError(false);
+                })
+                .catch((err) => {
+                    setIsSubmittable(true);
+                    setIsCommentError(true);
+                });
         }
     };
 
@@ -37,8 +49,19 @@ const CommentForm = () => {
                     required
                 />
                 <div className="CommentForm__submit">
-                    <button type="submit">Post</button>
+                    <button type="submit" disabled={!isSubmittable}>
+                        Post
+                    </button>
                 </div>
+                <p
+                    className={
+                        isCommentError
+                            ? "CommentForm__error-true"
+                            : "CommentForm__error-false"
+                    }
+                >
+                    Problem with posting comment, please try again later.
+                </p>
             </form>
         </>
     );

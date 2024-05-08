@@ -8,13 +8,15 @@ const CommentsList = () => {
     const { article_id } = useParams();
     const [commentsData, setCommentsData] = useState([]);
     const [loading, setLoading] = useState(true);
+    const [commentExpanded, setCommentExpanded] = useState(false);
+    const [commentPosted, setCommentPosted] = useState(null);
 
     useEffect(() => {
         fetchCommentsByArticleId(article_id).then(({ data: { comments } }) => {
             setCommentsData(comments);
             setLoading(false);
         });
-    }, []);
+    }, [commentPosted]);
 
     if (loading) return <h2>Loading comments...</h2>;
 
@@ -22,7 +24,42 @@ const CommentsList = () => {
         <>
             <section className="CommentsList">
                 <h3>Comments</h3>
-                <CommentForm></CommentForm>
+                <button
+                    className={
+                        commentExpanded
+                            ? "CommentsList-hidden"
+                            : "CommentsList-visible"
+                    }
+                    onClick={() => {
+                        setCommentExpanded(true);
+                    }}
+                >
+                    ➕
+                </button>
+                <button
+                    className={
+                        commentExpanded
+                            ? "CommentsList-visible"
+                            : "CommentsList-hidden"
+                    }
+                    onClick={() => {
+                        setCommentExpanded(false);
+                    }}
+                >
+                    ➖
+                </button>
+                <div
+                    className={
+                        commentExpanded
+                            ? "CommentsList-visible"
+                            : "CommentsList-hidden"
+                    }
+                >
+                    <CommentForm
+                        setCommentExpanded={setCommentExpanded}
+                        setCommentPosted={setCommentPosted}
+                    ></CommentForm>
+                </div>
                 {commentsData.map((comment) => {
                     return (
                         <CommentCard
