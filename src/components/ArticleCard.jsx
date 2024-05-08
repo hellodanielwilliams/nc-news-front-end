@@ -39,11 +39,11 @@ const ArticleCard = ({ article_id }) => {
                         <img src={articleData.article_img_url}></img>
                     </div>
                 </div>
-                {console.log(articleData.votes)}
             </Link>
             <Votes
                 id={articleData.article_id}
                 votes={articleData.votes}
+                voteType={"article"}
             ></Votes>
         </section>
     );
