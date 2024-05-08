@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { fetchCommentsByArticleId } from "../utils/api";
 import { useParams } from "react-router-dom";
 import CommentCard from "./CommentCard";
+import CommentForm from "./CommentForm";
 
 const CommentsList = () => {
     const { article_id } = useParams();
@@ -21,6 +22,7 @@ const CommentsList = () => {
         <>
             <section className="CommentsList">
                 <h3>Comments</h3>
+                <CommentForm></CommentForm>
                 {commentsData.map((comment) => {
                     return (
                         <CommentCard

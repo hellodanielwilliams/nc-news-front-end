@@ -3,10 +3,11 @@ import "./App.css";
 import ArticlesList from "./components/ArticlesList";
 import Header from "./components/Header";
 import ArticleDisplay from "./components/ArticleDisplay";
+import { UserProvider } from "./contexts/User";
 
 const App = () => {
     return (
-        <>
+        <UserProvider>
             <Header />
             <Routes>
                 <Route path="/" element={<ArticlesList />}></Route>
@@ -16,7 +17,7 @@ const App = () => {
                     element={<ArticleDisplay />}
                 ></Route>
             </Routes>
-        </>
+        </UserProvider>
     );
 };
 
