@@ -42,6 +42,7 @@ const CommentForm = ({ setCommentExpanded, setCommentPosted }) => {
         <>
             <form onSubmit={handleSubmit} className="CommentForm">
                 <textarea
+                    className="CommentForm__inputBox"
                     value={newCommentBody}
                     onChange={handleInput}
                     placeholder="Write a comment..."

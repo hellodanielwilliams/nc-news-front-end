@@ -23,31 +23,35 @@ const CommentsList = () => {
     return (
         <>
             <section className="CommentsList">
-                <h3>Comments</h3>
-                <button
-                    className={
-                        commentExpanded
-                            ? "CommentsList-hidden"
-                            : "CommentsList-visible"
-                    }
-                    onClick={() => {
-                        setCommentExpanded(true);
-                    }}
-                >
-                    ➕
-                </button>
-                <button
-                    className={
-                        commentExpanded
-                            ? "CommentsList-visible"
-                            : "CommentsList-hidden"
-                    }
-                    onClick={() => {
-                        setCommentExpanded(false);
-                    }}
-                >
-                    ➖
-                </button>
+                <div className="CommentsList__topLine">
+                    <h3>Comments</h3>
+                    <div className="CommentsList__buttonsBox">
+                        <button
+                            className={
+                                commentExpanded
+                                    ? "CommentsList-hidden"
+                                    : "CommentsList-visible"
+                            }
+                            onClick={() => {
+                                setCommentExpanded(true);
+                            }}
+                        >
+                            ➕
+                        </button>
+                        <button
+                            className={
+                                commentExpanded
+                                    ? "CommentsList-visible"
+                                    : "CommentsList-hidden"
+                            }
+                            onClick={() => {
+                                setCommentExpanded(false);
+                            }}
+                        >
+                            ➖
+                        </button>
+                    </div>
+                </div>
                 <div
                     className={
                         commentExpanded
