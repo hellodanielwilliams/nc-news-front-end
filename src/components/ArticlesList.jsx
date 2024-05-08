@@ -23,16 +23,21 @@ const ArticlesList = () => {
     if (loading) return <h2>Loading articles...</h2>;
 
     return (
-        <section className="ArticlesList">
-            {articlesData.map((article) => {
-                return (
-                    <ArticleCard
-                        key={article.article_id}
-                        article_id={article.article_id}
-                    />
-                );
-            })}
-        </section>
+        <>
+            {topic_name && (
+                <h2>{topic_name[0].toUpperCase() + topic_name.slice(1)}</h2>
+            )}
+            <section className="ArticlesList">
+                {articlesData.map((article) => {
+                    return (
+                        <ArticleCard
+                            key={article.article_id}
+                            article_id={article.article_id}
+                        />
+                    );
+                })}
+            </section>
+        </>
     );
 };
 
