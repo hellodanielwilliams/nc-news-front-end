@@ -24,26 +24,25 @@ const Votes = ({ id, votes }) => {
     return (
         <>
             <section className="Votes">
-                <p
-                    className={
-                        isVotingError
-                            ? "Votes__error-true"
-                            : "Votes__error-false"
-                    }
-                >
-                    Voting error, please try again later
-                </p>
-
-                <button disabled={hasVoted} onClick={() => handleVote(1)}>
-                    🔼
-                </button>
-                <p>
-                    {votesData} {votesData === 1 ? "Vote" : "Votes"}
-                </p>
-                <button disabled={hasVoted} onClick={() => handleVote(-1)}>
-                    🔽
-                </button>
+                <div className="Votes__buttonsBox">
+                    <button disabled={hasVoted} onClick={() => handleVote(1)}>
+                        🔼
+                    </button>
+                    <p>
+                        {votesData} {votesData === 1 ? "Vote" : "Votes"}
+                    </p>
+                    <button disabled={hasVoted} onClick={() => handleVote(-1)}>
+                        🔽
+                    </button>
+                </div>
             </section>
+            <p
+                className={
+                    isVotingError ? "Votes__error-true" : "Votes__error-false"
+                }
+            >
+                Voting error, please try again later
+            </p>
         </>
     );
 };
