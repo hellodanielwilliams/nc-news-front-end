@@ -114,7 +114,7 @@
   padding: .5em;
 }
 
-.Byline__topic p{
+.Byline__topic a{
   background-color: mediumaquamarine; 
   border-radius: 2px; 
   padding: .25em .5em;

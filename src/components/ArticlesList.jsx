@@ -18,7 +18,7 @@ const ArticlesList = () => {
             .catch((err) => {
                 console.error(err.response.data);
             });
-    }, []);
+    }, [topic_name]);
 
     if (loading) return <h2>Loading articles...</h2>;
 
