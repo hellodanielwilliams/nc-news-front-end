@@ -25,7 +25,7 @@ const UserDetails = ({ username }) => {
                     <img
                         src={
                             loading
-                                ? "/public/default_avatar.webp"
+                                ? "/default_avatar.webp"
                                 : userData.avatar_url
                         }
                     ></img>

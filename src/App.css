@@ -166,3 +166,33 @@
   border-bottom: none;
 }
 
+.Votes {
+  display: flex
+}
+
+.Votes__buttonsBox {
+  display: flex;
+  border-radius: 2px;
+  border: 1px solid gray;
+  padding: .2em;
+  justify-content: center;
+  align-content: center;
+}
+
+.Votes__buttonsBox button{
+  padding: .2em;
+}
+
+.Votes__buttonsBox p{
+  margin:0 1em 0 1em;
+}
+
+.Votes__error-true {
+  display: inline;
+  max-width: 90%;
+}
+
+
+.Votes__error-false {
+  display: none;
+}
