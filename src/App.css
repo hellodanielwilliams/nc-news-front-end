@@ -157,6 +157,33 @@
   border-top: 1px solid darkgray;  
 }
 
+.CommentsList-hidden {
+  display:none;
+}
+
+.CommentsList__topLine{
+  display:flex;
+}
+
+.CommentsList__buttonsBox {
+  justify-content: center;
+  align-content: center;
+}
+
+.CommentsList__topLine button, .CommentForm button{
+  background-color: mediumaquamarine;
+  color:white;
+  padding: 1em;
+  margin-left: 1em;
+  padding: .5em;
+}
+
+.CommentForm button:disabled {
+  opacity:50%;
+  cursor: not-allowed;
+}
+
+
 .CommentCard {
   border-bottom: 1px solid darkgray; 
   margin-bottom: 1em; 
@@ -170,7 +197,7 @@
   display: flex
 }
 
-.Votes__buttonsBox {
+.Votes__buttonsBox{
   display: flex;
   border-radius: 2px;
   border: 1px solid gray;
@@ -187,12 +214,22 @@
   margin:0 1em 0 1em;
 }
 
-.Votes__error-true {
+.Votes__error-true, .CommentForm__error-true {
   display: inline;
   max-width: 90%;
 }
 
-
-.Votes__error-false {
+.Votes__error-false, .CommentForm__error-false {
   display: none;
+}
+
+.CommentForm {
+  display:flex;
+  align-items: flex-end;
+}
+
+.CommentForm__inputBox{
+  min-width: 80%;
+  padding-top: 1em;
+  padding-bottom: 1em;
 }

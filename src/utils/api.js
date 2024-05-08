@@ -27,3 +27,7 @@ export const patchVotesByArticleId = (article_id, inc) => {
 export const patchVotesByCommentId = (comment_id, inc) => {
     return newsApi.patch(`/comments/${comment_id}`, inc)
 }
+
+export const postCommentByArticleId = (article_id, req) => {
+    return newsApi.post(`/articles/${article_id}/comments`, req)
+}
