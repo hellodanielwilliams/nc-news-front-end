@@ -6,6 +6,32 @@
   text-align: left;
 }
 
+.HeaderWrapper {
+  display:flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.TopicSelector {
+  border: 1px solid darkgray;
+  border-radius: 2px;
+  position: relative;
+}
+.TopicSelector button {
+ border-radius: 2px;
+}
+
+
+.TopicSelector__dropdown {
+  text-align: right;
+  padding-right: 1em;
+  position: absolute;
+  top: 100%;
+  width: 80%;
+  background-color: white;
+  color: #242424;
+}
+
 .ArticlesList {
   /* border: 2px solid royalblue; */
   padding: 0;

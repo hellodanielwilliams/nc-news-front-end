@@ -9,8 +9,10 @@ import TopicSelector from "./components/TopicSelector";
 const App = () => {
     return (
         <UserProvider>
-            <Header />
-            <TopicSelector />
+            <div className="HeaderWrapper">
+                <Header />
+                <TopicSelector />
+            </div>
             <Routes>
                 <Route path="/" element={<ArticlesList />}></Route>
                 <Route path="/articles" element={<ArticlesList />}></Route>

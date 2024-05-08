@@ -18,20 +18,22 @@ const TopicSelector = () => {
 
     return (
         <>
-            <h2 onClick={handleMenuToggle}>Topics</h2>
-            {isMenuVisible && (
-                <>
-                    {topicsData.map((topic, index) => {
-                        return (
-                            <p key={index}>
-                                <Link to={`/topics/${topic.slug}`}>
-                                    {topic.slug}
-                                </Link>
-                            </p>
-                        );
-                    })}
-                </>
-            )}
+            <section className="TopicSelector">
+                <button onClick={handleMenuToggle}>Topics</button>
+                {isMenuVisible && (
+                    <div className="TopicSelector__dropdown">
+                        {topicsData.map((topic, index) => {
+                            return (
+                                <p key={index} onClick={handleMenuToggle}>
+                                    <Link to={`/topics/${topic.slug}`}>
+                                        {topic.slug}
+                                    </Link>
+                                </p>
+                            );
+                        })}
+                    </div>
+                )}
+            </section>
         </>
     );
 };
