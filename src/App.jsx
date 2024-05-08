@@ -16,6 +16,10 @@ const App = () => {
                     path="/articles/:article_id"
                     element={<ArticleDisplay />}
                 ></Route>
+                <Route
+                    path="/topics/:topic_name"
+                    element={<ArticlesList />}
+                ></Route>
             </Routes>
         </UserProvider>
     );

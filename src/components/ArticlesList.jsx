@@ -2,12 +2,15 @@ import { useEffect } from "react";
 import ArticleCard from "./ArticleCard";
 import { fetchArticles } from "../utils/api";
 import { useState } from "react";
+import { useParams } from "react-router-dom";
 
 const ArticlesList = () => {
     const [articlesData, setArticlesData] = useState([]);
     const [loading, setLoading] = useState(true);
+    const { topic_name } = useParams();
+
     useEffect(() => {
-        fetchArticles()
+        fetchArticles(topic_name)
             .then(({ data: { articles } }) => {
                 setArticlesData(articles);
                 setLoading(false);
