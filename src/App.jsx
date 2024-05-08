@@ -4,11 +4,13 @@ import ArticlesList from "./components/ArticlesList";
 import Header from "./components/Header";
 import ArticleDisplay from "./components/ArticleDisplay";
 import { UserProvider } from "./contexts/User";
+import TopicSelector from "./components/TopicSelector";
 
 const App = () => {
     return (
         <UserProvider>
             <Header />
+            <TopicSelector />
             <Routes>
                 <Route path="/" element={<ArticlesList />}></Route>
                 <Route path="/articles" element={<ArticlesList />}></Route>

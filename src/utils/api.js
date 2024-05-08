@@ -39,3 +39,7 @@ export const postCommentByArticleId = (article_id, req) => {
 export const deleteCommentByCommentId = (comment_id) => {
     return newsApi.delete(`/comments/${comment_id}`)
 }
+
+export const getTopics = () => {
+    return newsApi.get(`/topics`)
+}
