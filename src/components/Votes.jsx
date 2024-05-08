@@ -1,10 +1,15 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { patchVotesByArticleId } from "../utils/api";
 
 const Votes = ({ id, votes }) => {
     const [votesData, setVotesData] = useState(votes);
     const [hasVoted, setHasVoted] = useState(false);
     const [isVotingError, setIsVotingError] = useState(false);
+
+    useEffect(() => {
+        setVotesData(votes);
+    }, [votes]);
+    console.log(votesData, "<< votes data", id, "<< id");
 
     const handleVote = (inc) => {
         setVotesData((prevVotesData) => prevVotesData + inc);
@@ -47,4 +52,3 @@ const Votes = ({ id, votes }) => {
 };
 
 export default Votes;
-<></>;
