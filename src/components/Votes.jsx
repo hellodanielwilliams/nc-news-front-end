@@ -1,15 +1,25 @@
-import { useState } from "react";
-import { patchVotesByArticleId } from "../utils/api";
+import { useEffect, useState } from "react";
+import { patchVotesByArticleId, patchVotesByCommentId } from "../utils/api";
 
-const Votes = ({ id, votes }) => {
+const Votes = ({ id, votes, voteType }) => {
     const [votesData, setVotesData] = useState(votes);
     const [hasVoted, setHasVoted] = useState(false);
     const [isVotingError, setIsVotingError] = useState(false);
 
+    useEffect(() => {
+        setVotesData(votes);
+    }, [votes]);
+
     const handleVote = (inc) => {
         setVotesData((prevVotesData) => prevVotesData + inc);
         setHasVoted(true);
-        patchVotesByArticleId(id, { inc_votes: inc })
+
+        const patchFunction =
+            voteType === "article"
+                ? patchVotesByArticleId
+                : patchVotesByCommentId;
+
+        patchFunction(id, { inc_votes: inc })
             .then(() => {
                 setIsVotingError(false);
             })
@@ -47,4 +57,3 @@ const Votes = ({ id, votes }) => {
 };
 
 export default Votes;
-<></>;

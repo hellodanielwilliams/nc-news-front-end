@@ -41,6 +41,7 @@ const ArticleDisplay = () => {
             <Votes
                 id={articleData.article_id}
                 votes={articleData.votes}
+                voteType={"article"}
             ></Votes>
             <section>
                 <CommentsList></CommentsList>

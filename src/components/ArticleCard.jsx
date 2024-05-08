@@ -3,6 +3,7 @@ import { fetchArticleById } from "../utils/api";
 import UserDetails from "./UserDetails";
 import { Link } from "react-router-dom";
 import Byline from "./Byline";
+import Votes from "./Votes";
 
 const ArticleCard = ({ article_id }) => {
     const [articleData, setArticleData] = useState({});
@@ -39,6 +40,11 @@ const ArticleCard = ({ article_id }) => {
                     </div>
                 </div>
             </Link>
+            <Votes
+                id={articleData.article_id}
+                votes={articleData.votes}
+                voteType={"article"}
+            ></Votes>
         </section>
     );
 };

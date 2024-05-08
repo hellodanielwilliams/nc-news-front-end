@@ -23,3 +23,7 @@ export const fetchCommentsByArticleId = (article_id) => {
 export const patchVotesByArticleId = (article_id, inc) => {
     return newsApi.patch(`/articles/${article_id}`, inc)
 }
+
+export const patchVotesByCommentId = (comment_id, inc) => {
+    return newsApi.patch(`/comments/${comment_id}`, inc)
+}
