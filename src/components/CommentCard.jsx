@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import Byline from "./Byline";
 import Votes from "./Votes";
 import { UserContext } from "../contexts/User";
@@ -6,8 +6,10 @@ import { deleteCommentByCommentId } from "../utils/api";
 
 const CommentCard = ({ comment, setCommentDeleted }) => {
     const { user } = useContext(UserContext);
+    const [isDeleteClicked, setIsDeleteClicked] = useState(false);
 
     const handleDelete = () => {
+        setIsDeleteClicked(true);
         deleteCommentByCommentId(comment.comment_id).then(() => {
             setCommentDeleted(comment.comment_id);
         });
@@ -34,8 +36,9 @@ const CommentCard = ({ comment, setCommentDeleted }) => {
                             onClick={() => {
                                 handleDelete();
                             }}
+                            disabled={isDeleteClicked}
                         >
-                            Delete
+                            {isDeleteClicked ? `Deleting...` : `Delete`}
                         </button>
                     )}
                 </div>
