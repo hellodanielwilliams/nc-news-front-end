@@ -183,7 +183,6 @@
   cursor: not-allowed;
 }
 
-
 .CommentCard {
   border-bottom: 1px solid darkgray; 
   margin-bottom: 1em; 
@@ -191,6 +190,11 @@
 
 .CommentCard:last-child {
   border-bottom: none;
+}
+
+.CommentCard__bottomLine{
+  display:flex;
+  justify-content: space-between;
 }
 
 .Votes {
