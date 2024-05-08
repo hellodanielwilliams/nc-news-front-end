@@ -7,12 +7,19 @@ import { deleteCommentByCommentId } from "../utils/api";
 const CommentCard = ({ comment, setCommentDeleted }) => {
     const { user } = useContext(UserContext);
     const [isDeleteClicked, setIsDeleteClicked] = useState(false);
+    const [isDeleteError, setIsDeleteError] = useState(false);
 
     const handleDelete = () => {
         setIsDeleteClicked(true);
-        deleteCommentByCommentId(comment.comment_id).then(() => {
-            setCommentDeleted(comment.comment_id);
-        });
+        deleteCommentByCommentId(comment.comment_id)
+            .then(() => {
+                setCommentDeleted(comment.comment_id);
+                setIsDeleteError(false);
+            })
+            .catch((err) => {
+                setIsDeleteError(true);
+                setIsDeleteClicked(false);
+            });
     };
 
     return (
@@ -42,6 +49,9 @@ const CommentCard = ({ comment, setCommentDeleted }) => {
                         </button>
                     )}
                 </div>
+                {isDeleteError && (
+                    <p>Problem deleting comment, please try again later</p>
+                )}
             </section>
         </>
     );
