@@ -31,3 +31,7 @@ export const patchVotesByCommentId = (comment_id, inc) => {
 export const postCommentByArticleId = (article_id, req) => {
     return newsApi.post(`/articles/${article_id}/comments`, req)
 }
+
+export const deleteCommentByCommentId = (comment_id) => {
+    return newsApi.delete(`/comments/${comment_id}`)
+}

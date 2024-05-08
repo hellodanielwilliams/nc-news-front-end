@@ -10,13 +10,14 @@ const CommentsList = () => {
     const [loading, setLoading] = useState(true);
     const [commentExpanded, setCommentExpanded] = useState(false);
     const [commentPosted, setCommentPosted] = useState(null);
+    const [commentDeleted, setCommentDeleted] = useState(null);
 
     useEffect(() => {
         fetchCommentsByArticleId(article_id).then(({ data: { comments } }) => {
             setCommentsData(comments);
             setLoading(false);
         });
-    }, [commentPosted]);
+    }, [commentPosted, commentDeleted]);
 
     if (loading) return <h2>Loading comments...</h2>;
 
@@ -69,6 +70,7 @@ const CommentsList = () => {
                         <CommentCard
                             comment={comment}
                             key={`c_${comment.comment_id}`}
+                            setCommentDeleted={setCommentDeleted}
                         />
                     );
                 })}

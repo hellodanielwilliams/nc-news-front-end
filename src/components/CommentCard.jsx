@@ -2,9 +2,16 @@ import { useContext } from "react";
 import Byline from "./Byline";
 import Votes from "./Votes";
 import { UserContext } from "../contexts/User";
+import { deleteCommentByCommentId } from "../utils/api";
 
-const CommentCard = ({ comment }) => {
+const CommentCard = ({ comment, setCommentDeleted }) => {
     const { user } = useContext(UserContext);
+
+    const handleDelete = () => {
+        deleteCommentByCommentId(comment.comment_id).then(() => {
+            setCommentDeleted(comment.comment_id);
+        });
+    };
 
     return (
         <>
@@ -22,7 +29,15 @@ const CommentCard = ({ comment }) => {
                         votes={comment.votes}
                         voteType={"comment"}
                     ></Votes>
-                    {user === comment.author && <button>Delete</button>}
+                    {user === comment.author && (
+                        <button
+                            onClick={() => {
+                                handleDelete();
+                            }}
+                        >
+                            Delete
+                        </button>
+                    )}
                 </div>
             </section>
         </>
