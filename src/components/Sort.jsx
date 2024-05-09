@@ -98,7 +98,7 @@ const Sort = () => {
                                 onClick={() => {
                                     setSearchParams({
                                         order: "asc",
-                                        sortBy: sortBy,
+                                        sort_by: sortBy,
                                     });
                                     setOrder("asc");
                                 }}
@@ -111,7 +111,7 @@ const Sort = () => {
                                 onClick={() => {
                                     setSearchParams({
                                         order: "desc",
-                                        sortBy: sortBy,
+                                        sort_by: sortBy,
                                     });
                                     setOrder("desc");
                                 }}
