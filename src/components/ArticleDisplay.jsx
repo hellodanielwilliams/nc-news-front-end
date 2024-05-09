@@ -17,6 +17,7 @@ const ArticleDisplay = () => {
     useEffect(() => {
         fetchArticleById(article_id)
             .then(({ data: { article } }) => {
+                setIsError(false);
                 setArticleData(article);
                 setIsLoading(false);
             })
