@@ -5,13 +5,13 @@ const Sort = () => {
     const [isSortMenuVisible, setIsSortMenuVisible] = useState(false);
     const [isOrderMenuVisible, setIsOrderMenuVisible] = useState(false);
     const [searchParams, setSearchParams] = useSearchParams();
-    const [sortBy, setSortBy] = useState("Date");
-    const [order, setOrder] = useState("⬇");
+    const [sortBy, setSortBy] = useState("created_at");
+    const [order, setOrder] = useState("desc");
 
     useEffect(() => {
         if (searchParams.size === 0) {
-            setSortBy("Date");
-            setOrder("⬇");
+            setSortBy("created_at");
+            setOrder("desc");
         }
     }, [searchParams]);
 
@@ -32,40 +32,50 @@ const Sort = () => {
                     handleMenuToggle("sortBy");
                 }}
             >
-                <button>Sort by : {sortBy}</button>
+                <button>
+                    Sort by :{" "}
+                    {sortBy === "created_at"
+                        ? "Date"
+                        : sortBy === "votes"
+                        ? "Votes"
+                        : "Comments"}
+                </button>
                 {isSortMenuVisible && (
                     <div className="Sort__sortBy-dropdown">
-                        {sortBy !== "Date" && (
+                        {sortBy !== "created_at" && (
                             <p
                                 onClick={() => {
                                     setSearchParams({
                                         sort_by: "created_at",
+                                        order: order,
                                     });
-                                    setSortBy("Date");
+                                    setSortBy("created_at");
                                 }}
                             >
                                 Date
                             </p>
                         )}
-                        {sortBy !== "Votes" && (
+                        {sortBy !== "votes" && (
                             <p
                                 onClick={() => {
                                     setSearchParams({
                                         sort_by: "votes",
+                                        order: order,
                                     });
-                                    setSortBy("Votes");
+                                    setSortBy("votes");
                                 }}
                             >
                                 Votes
                             </p>
                         )}
-                        {sortBy !== "Comments" && (
+                        {sortBy !== "comment_count" && (
                             <p
                                 onClick={() => {
                                     setSearchParams({
                                         sort_by: "comment_count",
+                                        order: order,
                                     });
-                                    setSortBy("Comments");
+                                    setSortBy("comment_count");
                                 }}
                             >
                                 Comments
@@ -80,28 +90,30 @@ const Sort = () => {
                     handleMenuToggle("order");
                 }}
             >
-                <button>Order : {order}</button>
+                <button>Order : {order === "asc" ? "⬆" : "⬇"}</button>
                 {isOrderMenuVisible && (
                     <div className="Sort__order-dropdown">
-                        {order !== "⬆" && (
+                        {order !== "asc" && (
                             <p
                                 onClick={() => {
                                     setSearchParams({
                                         order: "asc",
+                                        sortBy: sortBy,
                                     });
-                                    setOrder("⬆");
+                                    setOrder("asc");
                                 }}
                             >
                                 ⬆ Asc
                             </p>
                         )}
-                        {order !== "⬇" && (
+                        {order !== "desc" && (
                             <p
                                 onClick={() => {
                                     setSearchParams({
                                         order: "desc",
+                                        sortBy: sortBy,
                                     });
-                                    setOrder("⬇");
+                                    setOrder("desc");
                                 }}
                             >
                                 ⬇ Desc
