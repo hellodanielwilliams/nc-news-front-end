@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 
 const Sort = () => {
@@ -7,6 +7,13 @@ const Sort = () => {
     const [searchParams, setSearchParams] = useSearchParams();
     const [sortBy, setSortBy] = useState("Date");
     const [order, setOrder] = useState("⬇");
+
+    useEffect(() => {
+        if (searchParams.size === 0) {
+            setSortBy("Date");
+            setOrder("⬇");
+        }
+    }, [searchParams]);
 
     const handleMenuToggle = (menu) => {
         if (menu === "sortBy") {
