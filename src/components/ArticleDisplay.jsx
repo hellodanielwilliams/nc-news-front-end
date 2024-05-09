@@ -5,23 +5,24 @@ import UserDetails from "./UserDetails";
 import Byline from "./Byline";
 import CommentsList from "./CommentsList";
 import Votes from "./Votes";
+import TopicBar from "./TopicBar";
 
 const ArticleDisplay = () => {
     const { article_id } = useParams();
     const [articleData, setArticleData] = useState({});
-    const [loading, setLoading] = useState(true);
+    const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
         fetchArticleById(article_id).then(({ data: { article } }) => {
             setArticleData(article);
-            setLoading(false);
+            setIsLoading(false);
         });
     }, [article_id]);
 
-    if (loading) return <h2>Loading article...</h2>;
-
     return (
         <>
+            <TopicBar topic_name={articleData.topic} />
+            {isLoading && <h3>Loading article...</h3>}
             <article className="ArticleDisplay">
                 <Byline
                     username={articleData.author}

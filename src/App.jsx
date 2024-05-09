@@ -4,6 +4,7 @@ import ArticlesList from "./components/ArticlesList";
 import Header from "./components/Header";
 import ArticleDisplay from "./components/ArticleDisplay";
 import { UserProvider } from "./contexts/User";
+import TopicBar from "./components/TopicBar";
 
 const App = () => {
     return (
@@ -15,6 +16,10 @@ const App = () => {
                 <Route
                     path="/articles/:article_id"
                     element={<ArticleDisplay />}
+                ></Route>
+                <Route
+                    path="/topics/:topic_name"
+                    element={<ArticlesList />}
                 ></Route>
             </Routes>
         </UserProvider>

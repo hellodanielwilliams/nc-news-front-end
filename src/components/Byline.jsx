@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import UserDetails from "./UserDetails";
 
 const Byline = ({ username, date, topic }) => {
@@ -11,7 +12,9 @@ const Byline = ({ username, date, topic }) => {
                 {topic && (
                     <div className="Byline-right">
                         <div className="Byline__topic">
-                            <p>{topic}</p>
+                            <p>
+                                <Link to={`/topics/${topic}`}>{topic}</Link>
+                            </p>
                         </div>
                     </div>
                 )}
