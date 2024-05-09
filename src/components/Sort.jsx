@@ -75,14 +75,14 @@ const Sort = () => {
                 )}
             </div>
             <div
-                className="Order"
+                className="Sort__order"
                 onClick={() => {
                     handleMenuToggle("order");
                 }}
             >
                 <button>Order : {order}</button>
                 {isOrderMenuVisible && (
-                    <div className="Sort__sortBy-dropdown">
+                    <div className="Sort__order-dropdown">
                         {order !== "⬆" && (
                             <p
                                 onClick={() => {

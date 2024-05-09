@@ -27,11 +27,12 @@
   border-radius: 2px;
   position: relative;
 }
-.TopicSelector button {
+.TopicSelector button, .Sort button {
  border-radius: 2px;
 }
 
 .TopicSelector__dropdown {
+  border: 1px solid darkgray;
   text-align: right;
   padding-right: 1em;
   position: absolute;
@@ -39,6 +40,46 @@
   width: 80%;
   background-color: white;
   color: #242424;
+  z-index: 1;
+}
+
+.Sort {
+  display: flex;
+  margin-bottom: .25em;
+  margin-top: .25em;
+  padding-bottom: .25em;
+  padding-top: .25em;
+  border-top: 1px solid darkgrey;
+}
+
+.Sort__sortBy, .Sort__order{
+  position: relative;
+  margin-right:.5em;
+  border: 1px solid darkgray;
+}
+
+.Sort button{
+  padding: 0.2em;
+}
+
+.Sort__sortBy p, .Sort__order p{
+  cursor: pointer;
+}
+
+.Sort__sortBy p:hover, .Sort__order p:hover{
+  opacity: 80%;
+}
+
+.Sort__sortBy-dropdown, .Sort__order-dropdown {
+  position: absolute;
+  top:100%;
+  width: 85%;
+  text-align: right;
+  padding-right: 1em;
+  background-color: white;
+  color: #242424;
+  border: 1px solid darkgray;
+
 }
 
 .ArticlesList {
