@@ -6,11 +6,11 @@
   text-align: left;
 }
 
-.HeaderWrapper {
+/* .HeaderWrapper {
   display:flex;
   align-items: center;
   justify-content: space-between;
-}
+} */
 
 .TopicSelector {
   border: 1px solid darkgray;

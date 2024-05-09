@@ -1,18 +1,9 @@
 import { useEffect, useState } from "react";
-import { getTopics } from "../utils/api";
+import { fetchTopics } from "../utils/api";
 import { Link } from "react-router-dom";
 
-const TopicSelector = () => {
-    const [topicsData, setTopicsData] = useState([]);
+const TopicSelector = ({ topicsData }) => {
     const [isMenuVisible, setIsMenuVisible] = useState(false);
-    const [isLoading, setIsLoading] = useState(true);
-
-    useEffect(() => {
-        getTopics().then(({ data: { topics } }) => {
-            setTopicsData(topics);
-            setIsLoading(false);
-        });
-    }, []);
 
     const handleMenuToggle = () => {
         setIsMenuVisible(!isMenuVisible);
@@ -24,8 +15,7 @@ const TopicSelector = () => {
                 <button onClick={handleMenuToggle}>Topics</button>
                 {isMenuVisible && (
                     <div className="TopicSelector__dropdown">
-                        {isLoading && <p>Loading...</p>}
-                        {topicsData.map((topic, index) => {
+                        {topicsData.topics.map((topic, index) => {
                             return (
                                 <p key={index} onClick={handleMenuToggle}>
                                     <Link to={`/topics/${topic.slug}`}>

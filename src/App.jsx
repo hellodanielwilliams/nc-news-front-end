@@ -4,15 +4,12 @@ import ArticlesList from "./components/ArticlesList";
 import Header from "./components/Header";
 import ArticleDisplay from "./components/ArticleDisplay";
 import { UserProvider } from "./contexts/User";
-import TopicSelector from "./components/TopicSelector";
+import TopicBar from "./components/TopicBar";
 
 const App = () => {
     return (
         <UserProvider>
-            <div className="HeaderWrapper">
-                <Header />
-                <TopicSelector />
-            </div>
+            <Header />
             <Routes>
                 <Route path="/" element={<ArticlesList />}></Route>
                 <Route path="/articles" element={<ArticlesList />}></Route>

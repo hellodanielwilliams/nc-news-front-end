@@ -3,6 +3,8 @@ import ArticleCard from "./ArticleCard";
 import { fetchArticles } from "../utils/api";
 import { useState } from "react";
 import { useParams } from "react-router-dom";
+import TopicHeader from "./TopicBar";
+import TopicBar from "./TopicBar";
 
 const ArticlesList = () => {
     const [articlesData, setArticlesData] = useState([]);
@@ -24,9 +26,7 @@ const ArticlesList = () => {
 
     return (
         <>
-            {topic_name && (
-                <h2>{topic_name[0].toUpperCase() + topic_name.slice(1)}</h2>
-            )}
+            <TopicBar topic_name={topic_name} />
             <section className="ArticlesList">
                 {articlesData.map((article) => {
                     return (

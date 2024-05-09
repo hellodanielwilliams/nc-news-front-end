@@ -5,6 +5,7 @@ import UserDetails from "./UserDetails";
 import Byline from "./Byline";
 import CommentsList from "./CommentsList";
 import Votes from "./Votes";
+import TopicBar from "./TopicBar";
 
 const ArticleDisplay = () => {
     const { article_id } = useParams();
@@ -22,6 +23,7 @@ const ArticleDisplay = () => {
 
     return (
         <>
+            <TopicBar topic_name={articleData.topic} />
             <article className="ArticleDisplay">
                 <Byline
                     username={articleData.author}
