@@ -4,10 +4,16 @@ const newsApi = axios.create({
     baseURL: "https://nc-news-dw.onrender.com/api"
 })
 
-export const fetchArticles = (topic_name) => {
+export const fetchArticles = (topic_name, sort_by, order) => {
     const params = {}
     if(topic_name){
         params.topic = topic_name
+    }
+    if(sort_by){
+        params.sort_by = sort_by
+    }
+    if(order){
+        params.order = order
     }
     return newsApi.get(`/articles`, {params})
 }
