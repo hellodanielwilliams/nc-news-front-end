@@ -3,8 +3,8 @@ import ArticleCard from "./ArticleCard";
 import { fetchArticles } from "../utils/api";
 import { useState } from "react";
 import { useParams, useSearchParams } from "react-router-dom";
-import TopicHeader from "./TopicBar";
 import TopicBar from "./TopicBar";
+import Sort from "./Sort";
 
 const ArticlesList = () => {
     const [articlesData, setArticlesData] = useState([]);
@@ -24,12 +24,13 @@ const ArticlesList = () => {
             .catch((err) => {
                 console.error(err.response.data);
             });
-    }, [topic_name]);
+    }, [topic_name, searchParams]);
 
     return (
         <>
             <TopicBar topic_name={topic_name} />
             {isLoading && <h3>Loading articles...</h3>}
+            <Sort />
             <section className="ArticlesList">
                 {articlesData.map((article) => {
                     return (
