@@ -6,11 +6,21 @@
   text-align: left;
 }
 
-/* .HeaderWrapper {
+.TopicBar {
   display:flex;
+  flex-direction: row-reverse;
   align-items: center;
   justify-content: space-between;
-} */
+}
+
+.TopicBar__topicHeader h2 {
+  padding:0;
+  margin:0;
+}
+
+.TopicBar__topicHeader p {
+  margin:0;
+}
 
 .TopicSelector {
   border: 1px solid darkgray;
@@ -20,7 +30,6 @@
 .TopicSelector button {
  border-radius: 2px;
 }
-
 
 .TopicSelector__dropdown {
   text-align: right;

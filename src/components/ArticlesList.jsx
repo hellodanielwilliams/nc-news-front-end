@@ -8,25 +8,24 @@ import TopicBar from "./TopicBar";
 
 const ArticlesList = () => {
     const [articlesData, setArticlesData] = useState([]);
-    const [loading, setLoading] = useState(true);
+    const [isLoading, setIsLoading] = useState(true);
     const { topic_name } = useParams();
 
     useEffect(() => {
         fetchArticles(topic_name)
             .then(({ data: { articles } }) => {
                 setArticlesData(articles);
-                setLoading(false);
+                setIsLoading(false);
             })
             .catch((err) => {
                 console.error(err.response.data);
             });
     }, [topic_name]);
 
-    if (loading) return <h2>Loading articles...</h2>;
-
     return (
         <>
             <TopicBar topic_name={topic_name} />
+            {isLoading && <h3>Loading articles...</h3>}
             <section className="ArticlesList">
                 {articlesData.map((article) => {
                     return (

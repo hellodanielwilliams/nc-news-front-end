@@ -21,13 +21,20 @@ const TopicBar = ({ topic_name }) => {
 
     return (
         <>
-            {topic_name && (
-                <>
-                    <h2>{topic_name[0].toUpperCase() + topic_name.slice(1)}</h2>
-                    <p>{topicDesc}</p>
-                </>
-            )}
-            {<TopicSelector topicsData={topicsData}></TopicSelector>}
+            <section className="TopicBar">
+                {<TopicSelector topicsData={topicsData}></TopicSelector>}
+                <div className="TopicBar__topicHeader">
+                    {topic_name && (
+                        <>
+                            <h2>
+                                {topic_name[0].toUpperCase() +
+                                    topic_name.slice(1)}
+                            </h2>
+                            <p>{topicDesc}</p>
+                        </>
+                    )}
+                </div>
+            </section>
         </>
     );
 };
