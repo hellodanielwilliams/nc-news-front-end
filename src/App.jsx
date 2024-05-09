@@ -5,6 +5,7 @@ import Header from "./components/Header";
 import ArticleDisplay from "./components/ArticleDisplay";
 import { UserProvider } from "./contexts/User";
 import TopicBar from "./components/TopicBar";
+import ErrorNotFound from "./components/ErrorNotFound";
 
 const App = () => {
     return (
@@ -21,6 +22,7 @@ const App = () => {
                     path="/topics/:topic_name"
                     element={<ArticlesList />}
                 ></Route>
+                <Route path="*" element={<ErrorNotFound />}></Route>
             </Routes>
         </UserProvider>
     );
