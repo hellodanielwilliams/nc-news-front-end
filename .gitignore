@@ -24,3 +24,5 @@ dist-ssr
 *.sw?
 
 __instructions__
+# Local Netlify folder
+.netlify
